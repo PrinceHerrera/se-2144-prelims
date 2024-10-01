@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, Arial, Helvetica;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(210, 210, 241);
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 360px;
+    background-color: #28282B;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.display input {
+    width: 100%;
+    padding: 20px;
+    font-size: 32px;
+    border: none;
+    border-radius: 15px;
+    background-color: #c5ccce;
+    box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.3);
+    text-align: right;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+input[type="button"] {
+    font-size: larger;
+    font-weight: bold;
+    width: 22%;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #daf153;
+    transition: background-color 0.3 ease, transition 0.2s ease;
+}
+
+input[type="button"]:hover {
+    background-color: rgb(168, 189, 74);
+}
+
+input[type="button"]:active {
+    transform: translateY(2px);
+}
+
+input.operator {
+    background-color: rgb(240, 115, 13);
+}
+
+input.operator:hover {
+    background-color: rgb(190, 91, 10);
+}
+
+input.special {
+    background-color: rgb(86, 173, 245);
+}
+
+input.special:hover {
+    background-color: rgb(52, 140, 212);
+}
+
+input.clear {
+    background-color: rgb(235, 72, 72);
+}
+
+input.clear:hover {
+    background-color: rgb(207, 50, 50);
+}

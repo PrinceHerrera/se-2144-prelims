@@ -13,32 +13,28 @@ function updateDisplay(value) {
     if (turnedOff) return; // disallow any input if this is true (turned off)
     if (currentInput.length >= 15) return; // limit the amount of characters
 
-     // immediately throws a SyntaxError if multiple decimals are entered in one number
-     if (value === '.' && currentInput.split(/[\+\-\×÷]/).pop().includes('.')) {
-        display.value = 'SyntaxError';
-        return;
-    }
-    
     currentInput += value;
     display.value = currentInput;
     display.scrollLeft = display.scrollWidth
     
 }
 
-// opeartions
+// operations
 function calculate() {
     try {
        
         // replacing the symbols with the valid operators
-        let result = eval(currentInput.replace('×', '*').replace('÷', '/'));
+        let expression = currentInput.replace(/×/g, "*").replace(/÷/g, "/")
+        let result = eval(expression)
         currentInput = parseFloat(result.toFixed(15)).toString().slice(0,15);; // limiting the output to 15 characters to prevent overflowing
         display.value = currentInput;
-        if (result === Infinity || result === -Infinity || isNaN(result)) {
-            display.value = "MathError"
+        if (result === Infinity || result === -Infinity || isNaN(result)) { // MathError if dividing by 0
+            display.value = "MathError" 
             return
         }
+
     } catch (error) {
-        display.value = 'Error';
+        display.value = 'SyntaxError';
     }
 }
 

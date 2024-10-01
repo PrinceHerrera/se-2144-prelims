@@ -12,7 +12,6 @@ const hello = ["Hello", "Konnichiwa", "Hola", "Bonjour", "Anyeong haseyo", "Shal
 function updateDisplay(value) {
     if (turnedOff) return; // disallow any input if this is true (turned off)
     if (currentInput.length >= 15) return; // limit the amount of characters
-
     currentInput += value;
     display.value = currentInput;
     display.scrollLeft = display.scrollWidth
@@ -69,10 +68,9 @@ buttons.forEach(button => {
 
         } else if (['+', '-', '×', '÷'].includes(buttonValue)) {
             // operator inputs and prevents multiple operators in a row
-            if (!currentInput.endsWith(' ') && currentInput !== '') {
-                currentInput += ` ${buttonValue} `;
-                display.value = currentInput;
-            }
+            currentInput += ` ${buttonValue} `;
+            display.value = currentInput;
+
         } else if (buttonValue === '=') {
             calculate();
             

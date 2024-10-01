@@ -28,14 +28,15 @@ function updateDisplay(value) {
 // opeartions
 function calculate() {
     try {
-        if (currentInput.includes('÷ 0')) {
-            display.value = 'MathError';
-            return;
-        }
+       
         // replacing the symbols with the valid operators
         let result = eval(currentInput.replace('×', '*').replace('÷', '/'));
         currentInput = parseFloat(result.toFixed(15)).toString().slice(0,15);; // limiting the output to 15 characters to prevent overflowing
         display.value = currentInput;
+        if (result === Infinity || result === -Infinity || isNaN(result)) {
+            display.value = "MathError"
+            return
+        }
     } catch (error) {
         display.value = 'Error';
     }
@@ -80,7 +81,6 @@ buttons.forEach(button => {
             calculate();
             
         } else {
-            // Handle special buttons (AC, ⬅, Bye, Hello)
             specialKeys(buttonValue);
         }
     });
